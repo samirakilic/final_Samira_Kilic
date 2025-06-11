@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.MainPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}"
+             Title="Ana Sayfa">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!-- Profil Fotoğrafı -->
+            <Frame WidthRequest="200" HeightRequest="200"
+                   CornerRadius="100"
+                   Padding="0"
+                   IsClippedToBounds="True"
+                   HasShadow="True"
+                   HorizontalOptions="Center">
+                <Image Source="samirakilic.jpg"
+                       Aspect="AspectFill"
+                       SemanticProperties.Description="Öğrencinin Fotoğrafı" />
+            </Frame>
+
+            <!-- İsim -->
+            <Label Text="Samira Kılıç"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                   HorizontalOptions="Center" />
+
+            <!-- Öğrenci No -->
+            <Label Text="Öğrenci No: 22670310139"
+                   FontSize="18"
+                   TextColor="{AppThemeBinding Light=DimGray, Dark=LightGray}"
+                   HorizontalOptions="Center" />
+
+            <!-- Açıklama -->
+            <Label Text="Bu uygulama Görsel Programlama dersi final ödevi kapsamında hazırlanmıştır."
+                   FontSize="16"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap" />
+
+            <Label Text="Bartın Üniversitesi - Bilgisayar Mühendisliği Bölümü."
+                   FontSize="16"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

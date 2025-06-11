@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="final_Samira_Kilic.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:final_Samira_Kilic"
+    FlyoutBehavior="Flyout"
+    Title="final_Samira_Kilic">
+
+
+    <FlyoutItem Title="Giriş" Icon="home.png">
+        <ShellContent Title="Giriş" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Kurlar" Icon="kurlar.png">
+        <ShellContent Title="Kurlar" ContentTemplate="{DataTemplate local:Kurlar}" Route="Kurlar" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Haberler" Icon="haberlerr.png">
+        <ShellContent Title="Haberler" ContentTemplate="{DataTemplate local:Haberler}" Route="Haberler" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Hava Durumu" Icon="hava.png">
+        <ShellContent Title="Hava Durumu" ContentTemplate="{DataTemplate local:HavaDurumu}" Route="HavaDurumu" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Yapılacaklar" Icon="todo.png">
+        <ShellContent Title="Yapılacaklar" ContentTemplate="{DataTemplate local:Yapilacaklar}" Route="Yapilacaklar" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Ayarlar" Icon="ayar.png">
+        <ShellContent Title="Ayarlar" ContentTemplate="{DataTemplate local:Ayarlar}" Route="Ayarlar" />
+    </FlyoutItem>
+</Shell>
+    
+    

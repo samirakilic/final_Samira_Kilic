@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.Haberler"
+             Title="Haberler"
+             BackgroundColor="#FAFAFA">
+
+    <ContentPage.Resources>
+        <Style x:Key="KategoriButtonStyle" TargetType="Frame">
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BackgroundColor" Value="#4CAF50"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="HasShadow" Value="True"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="10" RowDefinitions="Auto,*">
+        <!-- Kategoriler -->
+        <ScrollView Orientation="Horizontal" HeightRequest="50" Grid.Row="0">
+            <StackLayout Orientation="Horizontal">
+                <Frame Style="{StaticResource KategoriButtonStyle}">
+                    <Label Text="Manşet" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CategoryTapped" CommandParameter="Manşet"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame Style="{StaticResource KategoriButtonStyle}">
+                    <Label Text="Ekonomi" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CategoryTapped" CommandParameter="Ekonomi"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame Style="{StaticResource KategoriButtonStyle}">
+                    <Label Text="Gündem" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CategoryTapped" CommandParameter="Gündem"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame Style="{StaticResource KategoriButtonStyle}">
+                    <Label Text="Spor" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CategoryTapped" CommandParameter="Spor"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+                <Frame Style="{StaticResource KategoriButtonStyle}">
+                    <Label Text="Bilim" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CategoryTapped" CommandParameter="Bilim"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Haberler -->
+        <CollectionView x:Name="newsListView"
+                        Grid.Row="1"
+                        ItemsSource="{Binding FilteredNewsItems}"
+                        SelectionMode="Single"
+                        SelectionChanged="NewsListView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="10" CornerRadius="20" BackgroundColor="White" HasShadow="True">
+                        <StackLayout Spacing="8">
+                            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="200" />
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                            <Label Text="{Binding Author}" FontSize="14" TextColor="#777"/>
+                            <Label Text="{Binding PubDate}" FontSize="12" TextColor="#AAA"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

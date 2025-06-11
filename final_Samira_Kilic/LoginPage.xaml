@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.LoginPage"
+             Title="Giriş Yap"
+             BackgroundColor="{AppThemeBinding Light=#FFF5F5F5, Dark=#FF121212}">
+
+    <Grid Padding="30" RowDefinitions="Auto, *, Auto" RowSpacing="25">
+
+        <!-- Başlık -->
+        <Label Text="Hoş Geldiniz"
+               FontSize="30"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+               Grid.Row="0" />
+
+        <!-- Giriş Formu -->
+        <VerticalStackLayout Grid.Row="1" Spacing="20" VerticalOptions="Center">
+
+            <Frame HasShadow="False" CornerRadius="10" Padding="0" BackgroundColor="{AppThemeBinding Light=White, Dark=#FF1E1E1E}">
+                <Entry x:Name="emailEntry"
+                       Placeholder="Email adresi"
+                       Keyboard="Email"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                       PlaceholderColor="{AppThemeBinding Light=Gray, Dark=LightGray}"
+                       HeightRequest="50"
+                       ClearButtonVisibility="WhileEditing" />
+            </Frame>
+
+            <Frame HasShadow="False" CornerRadius="10" Padding="0" BackgroundColor="{AppThemeBinding Light=White, Dark=#FF1E1E1E}">
+                <Entry x:Name="passwordEntry"
+                       Placeholder="Şifre"
+                       IsPassword="True"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                       PlaceholderColor="{AppThemeBinding Light=Gray, Dark=LightGray}"
+                       HeightRequest="50"
+                       ClearButtonVisibility="WhileEditing" />
+            </Frame>
+
+            <!-- Giriş Yap Butonu Frame ile gölge verildi -->
+            <Frame HasShadow="True" CornerRadius="12" Padding="0" BackgroundColor="Transparent">
+                <Button Text="Giriş Yap"
+                        Clicked="OnLoginClicked"
+                        BackgroundColor="#6200EE"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="12" />
+            </Frame>
+
+            <Button Text="Kayıt Ol"
+                    Clicked="OnRegisterClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="#6200EE"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="12"
+                    BorderColor="#6200EE"
+                    BorderWidth="2" />
+        </VerticalStackLayout>
+
+        
+    </Grid>
+</ContentPage>

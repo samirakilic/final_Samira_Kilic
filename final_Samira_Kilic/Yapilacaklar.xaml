@@ -1,0 +1,65 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.Yapilacaklar"
+             Title="Yapılacaklar"
+             BackgroundColor="#96E4CA">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+
+        <!-- Görev Ekleme/Düzenleme Formu -->
+        <Frame x:Name="taskForm" IsVisible="False" Padding="10" BackgroundColor="black" CornerRadius="10" HasShadow="True" Grid.Row="0">
+            <StackLayout Spacing="10">
+                <Entry x:Name="titleEntry" Placeholder="Görev Başlığı" />
+                <Editor x:Name="descriptionEntry" Placeholder="Detay" HeightRequest="80" />
+                <DatePicker x:Name="datePicker" />
+                <TimePicker x:Name="timePicker" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                    <Button x:Name="saveBtn" Text="Kaydet" Clicked="OnSaveClicked" BackgroundColor="#4CAF50" TextColor="Black" CornerRadius="8" />
+                    <Button Text="İptal" Clicked="OnCancelClicked" BackgroundColor="black" TextColor="Black" CornerRadius="8" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+        <!-- Görev Listesi -->
+        <CollectionView x:Name="taskCollectionView" Grid.Row="1" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" HasShadow="True" CornerRadius="8" BackgroundColor="White">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto" RowDefinitions="Auto,Auto,Auto">
+                            <CheckBox IsChecked="{Binding IsCompleted}" VerticalOptions="Center" CheckedChanged="OnTaskCheckedChanged" />
+
+                            <Label Grid.Column="1" Text="{Binding Title}" FontAttributes="Bold" FontSize="18">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="TextColor" Value="Black" />
+                                        <Style.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                                <Setter Property="TextColor" Value="Gray" />
+                                                <Setter Property="TextDecorations" Value="Strikethrough" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                            <Button Grid.Column="2" Text="Sil" Clicked="OnDeleteTaskClicked" BackgroundColor="#F44336" TextColor="black" WidthRequest="60" />
+                            <Button Grid.Column="3" Text="Düzenle" Clicked="OnEditTaskClicked" BackgroundColor="#2196F3" TextColor="black" WidthRequest="70" />
+
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" FontSize="14" TextColor="black" />
+
+                            <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                                <Label Text="{Binding Date}" FontSize="12" TextColor="Gray" />
+                                <Label Text="{Binding Time}" FontSize="12" TextColor="Gray" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Görev Ekle Butonu -->
+        <Button Grid.Row="2" Text="Yeni Görev Ekle" Clicked="OnAddTaskClicked"
+                BackgroundColor="#2196F3" TextColor="White" CornerRadius="10"
+                HeightRequest="50" HorizontalOptions="Fill" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.HavaDurumu"
+             Title="Hava Durumu">
+
+    <StackLayout Padding="10">
+        <CollectionView x:Name="ImageCollection"
+                        SelectionMode="Single"
+                        SelectionChanged="ImageCollection_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" Text="{Binding Name}" FontSize="20" VerticalOptions="Center" />
+                        <Image Grid.Column="1" Source="{Binding Source}" WidthRequest="300" HeightRequest="100" />
+                        <Button Grid.Column="2" Text="Sil" BackgroundColor="Red" TextColor="White" Clicked="OnDeleteClicked" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid RowDefinitions="*,Auto">
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="1"
+                         HorizontalOptions="End"
+                         Padding="10"
+                         Spacing="5">
+                <Button Text="Ekle"
+                        TextColor="Black"
+                        BorderWidth="3"
+                        BorderColor="Green"
+                        BackgroundColor="White"
+                        Clicked="OnButtonClick" />
+
+                <Button Text="Yenile"
+                        TextColor="Black"
+                        BorderWidth="3"
+                        BorderColor="Green"
+                        BackgroundColor="White"
+                        Clicked="OnRefreshButtonClick" />
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="final_Samira_Kilic.Kurlar"
+             Title="Kurlar"
+             BackgroundColor="{AppThemeBinding Light=#FFEFF6F9, Dark=#FF1E1E1E}">
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <!-- Başlık -->
+        <Label Text="Güncel Döviz Kurları" 
+               FontSize="24" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+        <!-- Yenile Butonu -->
+        <Button Text="Kurları Yenile"
+                Clicked="OnRefreshClicked"
+                BackgroundColor="#FF4CAF50"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="12"
+                HeightRequest="45"
+                HorizontalOptions="FillAndExpand" />
+
+        <!-- Yükleniyor Animasyonu -->
+        <ActivityIndicator x:Name="loadingIndicator"
+                           IsRunning="False"
+                           IsVisible="False"
+                           Color="{AppThemeBinding Light=#FF388E3C, Dark=LightGreen}"
+                           HeightRequest="50"
+                           HorizontalOptions="Center" />
+
+        <!-- Kurlar Listesi -->
+        <CollectionView x:Name="dovizliste" Margin="0" SelectionMode="None" >
+
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*,*,*,*,Auto" Padding="12" BackgroundColor="#FF2E7D32">
+                    <Label Text="Tür" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text="Alış" Grid.Column="1" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text="Satış" Grid.Column="2" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text="Fark" Grid.Column="3" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text="Yönü" Grid.Column="4" FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" HasShadow="True"
+                           BackgroundColor="{AppThemeBinding Light=White, Dark=#FF2C2C2C}"
+                           BorderColor="{AppThemeBinding Light=#FF388E3C, Dark=LightGreen}">
+                        <Grid ColumnDefinitions="*,*,*,*,Auto" VerticalOptions="Center">
+
+                            <Label Text="{Binding Doviz}" Grid.Column="0"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center" />
+
+                            <Label Text="{Binding Alis}" Grid.Column="1"
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light=#FFF57C00, Dark=#FFFFB74D}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center" />
+
+                            <Label Text="{Binding Satis}" Grid.Column="2"
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light=#FF7B1FA2, Dark=#FFE1BEE7}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center" />
+
+                            <Label Text="{Binding Fark}" Grid.Column="3"
+                                   FontSize="16"
+                                   TextColor="{AppThemeBinding Light=#FFFF8A65, Dark=#FFFFCCBC}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center" />
+
+                            <Image Source="{Binding Yon}" Grid.Column="4"
+                                   HeightRequest="24" WidthRequest="24"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
